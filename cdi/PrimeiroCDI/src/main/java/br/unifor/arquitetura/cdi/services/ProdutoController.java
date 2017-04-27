@@ -7,15 +7,17 @@ import br.unifor.arquitetura.cdi.dao.ProdutoDAO;
 import br.unifor.arquitetura.cdi.entidades.Produto;
 import br.unifor.arquitetura.cdi.util.DAO;
 import br.unifor.arquitetura.cdi.util.Geral;
+import br.unifor.arquitetura.cdi.util.Transacional;
 
 @Geral
+//@Transacional
 public class ProdutoController {
 	@Inject
 	@DAO
 	private ProdutoDAO dao;
 	private static ProdutoController instance;
 
-	private ProdutoController() {
+	protected ProdutoController() {
 	}
 
 	@Produces

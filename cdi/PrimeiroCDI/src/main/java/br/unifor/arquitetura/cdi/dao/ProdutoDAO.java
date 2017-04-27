@@ -13,9 +13,7 @@ public class ProdutoDAO {
 	private EntityManager entityManager;
 
 	public Integer adiciona(Produto produto) {
-		entityManager.getTransaction().begin();
 		entityManager.persist(produto);
-		entityManager.getTransaction().commit();
 		return produto.getCodigo();
 	}
 }
