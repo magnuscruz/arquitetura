@@ -25,8 +25,8 @@ public class ProdutoController {
 		return instance;
 	}
 
-	public String inserir(Produto produto) {
-		dao.adiciona(produto);
-		return "Produto adicionado!";
+	public Integer inserir(Produto produto) {
+		Integer id = dao.adiciona(produto);
+		return id;
 	}
 }
