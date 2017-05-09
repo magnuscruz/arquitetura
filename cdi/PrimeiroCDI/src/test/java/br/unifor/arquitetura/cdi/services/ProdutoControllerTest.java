@@ -1,5 +1,6 @@
 package br.unifor.arquitetura.cdi.services;
 
+import static br.unifor.arquitetura.cdi.services.builders.ProdutoBuilder.*;
 import static org.junit.Assert.assertNotNull;
 
 import javax.inject.Inject;
@@ -30,10 +31,7 @@ public class ProdutoControllerTest {
 
 	@Test
 	public void test() {
-		Produto produto = new Produto();
-		// produto.setCodigo(1);
-		produto.setNome("IMPRESSORA LASER 1234");
-		produto.setPreco(700.99);
+		Produto produto = umProduto().comNome().comPreco().agora();
 		Integer id = produtoController.inserir(produto);
 		assertNotNull(id);
 	}

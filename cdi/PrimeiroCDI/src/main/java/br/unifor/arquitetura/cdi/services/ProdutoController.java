@@ -10,7 +10,7 @@ import br.unifor.arquitetura.cdi.util.Geral;
 import br.unifor.arquitetura.cdi.util.Transacional;
 
 @Geral
-//@Transacional
+@Transacional
 public class ProdutoController {
 	@Inject
 	@DAO
