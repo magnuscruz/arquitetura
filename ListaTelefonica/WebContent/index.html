@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="listaTelefonica" version="-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+	<title>Hello World</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+	<style type="text/css">
+		.jumbotron {
+			width: 400px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+		}
+	</style>
+	<script src="./lib/angular/angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("listaTelefonica",[]);//Cria o modulo
+		app.controller("listaTelefonicaCtrl", function($scope) {//Injecao do $scope na funcao
+			$scope.app = "Lista Telefonica";
+			$scope.contatos = [
+				{nome : "Pedro", telefone: "(85)999996666" },
+				{nome : "Paulo", telefone: "(85)999997777" },
+				{nome : "Maria", telefone: "(85)999998888" }
+			];
+		})
+	</script>
+</head>
+<body ng-controller="listaTelefonicaCtrl">
+	<div class="jumbotron">
+		<h4>{{'Minha '+app}}</h4>
+		<table border="1">
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+			</tr>
+			<tr ng-repeat="contato in contatos">
+				<td>{{contato.nome}}</td>
+				<td>{{contato.telefone}}</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
