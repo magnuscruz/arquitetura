@@ -16,23 +16,8 @@
 		}
 
 	</style>
-	<script type="text/javascript" src="lib/angular/angular.js"></script>
-	<script type="text/javascript">
-		angular.module("listaTelefonica", []);
-		angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope){
-			$scope.app="Lista Telefonica";
-			$scope.contatos=[
-				{nome:"Magnus",telefone:"(85)999996666"},
-				{nome:"Arthur",telefone:"(85)988886666"},
-				{nome:"Paulo",telefone:"(85)977776666"},
-			];
-			$scope.adicionarContato = function () {
-				$scope.contatos.push({nome: $scope.nome, telefone: $scope.telefone});
-			};
-		});
-	</script>
 </head>
-<body ng-controller="listaTelefonicaCtrl">
+<body ng-controller="listaTelefonicaCtrl" ng-app="app" class="ng-scope">
 	<div class="jumbotron">
 		<h4 ng-bind="app"></h4>
 		<table class="table table-striped">
@@ -45,9 +30,32 @@
 				<th>{{contato.telefone}}</th>
 			</tr>
 		</table>
-		<input class="form-control" type="text" ng-model="nome">
-		<input class="form-control" type="text" ng-model="telefone">
-		<button ng-click="adicionarContato()">Adicionar Contato</button>
+		<input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome">
+		<input class="form-control ng-touched ng-dirty ng-valid-parse ng-valid ng-valid-mask" type="text" ng-model="contato.telefone" placeholder="Telefone" maxlength="15" mask="(99)9?9999-9999"/>
+		<button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)">Adicionar Contato</button>
 	</div>
+	<script src="lib/angular/angular.min.js"></script>
+	<script  src="lib/jquery/jquery-latest.min.js"></script>
+ 	<script src="lib/angular/ngMask.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		angular.module("listaTelefonica", []);
+		//Criacao do Conttroller
+		angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope){
+			$scope.app="Lista Telefonica";
+			$scope.contatos=[
+				{nome:"Magnus",telefone:"(85)99999-6666"},
+				{nome:"Arthur",telefone:"(85)98888-6666"},
+				{nome:"Paulo",telefone:"(85)97777-6666"},
+			];
+			$scope.adicionarContato = function (contato) {
+				$scope.contatos.push(angular.copy(contato));
+				delete $scope.contato;
+			};
+		});
+	</script>
+
 </body>
 </html>
